@@ -1,5 +1,5 @@
 [build]
-command = "npm run build"
+command = "npx react-router build"
 publish = "build/client"
 
 [build.environment]
