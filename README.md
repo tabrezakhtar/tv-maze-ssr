@@ -1,87 +1,48 @@
-# Welcome to React Router!
+# Field Notes: Nature on TV
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Field Notes is a server-rendered catalog of nature and wildlife television shows. It uses the TVMaze API to list shows matching "nature" and provides a detail page for each show.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## Pages
 
-## Features
+- `/` displays the nature-show catalog with posters and basic show information.
+- `/shows/:showId` displays a show's overview, rating, seasons, and cast.
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+Show data is loaded by React Router route loaders from TVMaze. With server-side rendering enabled, those API requests run on the server.
 
-## Getting Started
+## Stack
 
-### Installation
+- React Router Framework Mode with TypeScript and SSR
+- Tailwind CSS 4
+- TVMaze API
+- Netlify React Router Vite plugin for Netlify SSR deployment
 
-Install the dependencies:
+## Local Development
 
-```bash
+Install dependencies:
+
+```sh
 npm install
 ```
 
-### Development
+Start the development server:
 
-Start the development server with HMR:
-
-```bash
+```sh
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
+The app is available at `http://localhost:5173`.
 
 Create a production build:
 
-```bash
+```sh
 npm run build
 ```
 
-## Deployment
+## Deploy to Netlify
 
-### Docker Deployment
+The repository includes `netlify.toml` with the build command and publish directory, and the Vite config includes Netlify's React Router adapter. Connect the repository to Netlify and deploy; the adapter runs the SSR app using Netlify Functions. Node.js `22.22.0` is configured in `netlify.toml` to meet the React Router engine requirement.
 
-To build and run using Docker:
+## TVMaze API
 
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+- Search: `https://api.tvmaze.com/search/shows?q=nature`
+- Show details: `https://api.tvmaze.com/shows/{id}?embed[]=cast&embed[]=seasons`
