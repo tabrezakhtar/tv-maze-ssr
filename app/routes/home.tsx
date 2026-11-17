@@ -1,4 +1,5 @@
 import type { Route } from "./+types/home";
+import { Link } from "react-router";
 
 type Show = {
   id: number;
@@ -38,10 +39,10 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   return (
     <main className="catalog-page">
       <header className="site-header">
-        <a className="wordmark" href="/" aria-label="Field Notes home">
+        <Link className="wordmark" to="/" aria-label="Field Notes home">
           <span className="wordmark-mark" aria-hidden="true">F</span>
           <span>FIELD NOTES<span className="wordmark-dot">.</span></span>
-        </a>
+        </Link>
         <span className="header-caption">A guide to the wild on screen</span>
       </header>
 
@@ -67,7 +68,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         ) : (
           <div className="show-grid">
             {shows.map((show, index) => (
-              <a className="show-card" href={`/shows/${show.id}`} key={show.id}>
+              <Link className="show-card" to={`/shows/${show.id}`} key={show.id}>
                 <div className="poster-wrap">
                   {show.image ? (
                     <img src={show.image.medium} alt={`${show.name} poster`} loading="lazy" />
@@ -84,7 +85,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                   </div>
                   <span className="show-year">{show.premiered?.slice(0, 4) ?? "—"}</span>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         )}

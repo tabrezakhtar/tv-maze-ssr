@@ -1,5 +1,5 @@
 import type { Route } from "./+types/show-details";
-import { isRouteErrorResponse } from "react-router";
+import { isRouteErrorResponse, Link } from "react-router";
 
 type Person = {
   id: number;
@@ -61,11 +61,11 @@ export default function ShowDetails({ loaderData: show }: Route.ComponentProps) 
   return (
     <main className="detail-page">
       <header className="site-header">
-        <a className="wordmark" href="/" aria-label="Field Notes home">
+        <Link className="wordmark" to="/" aria-label="Field Notes home">
           <span className="wordmark-mark" aria-hidden="true">F</span>
           <span>FIELD NOTES<span className="wordmark-dot">.</span></span>
-        </a>
-        <a className="back-link" href="/">← <span>All shows</span></a>
+        </Link>
+        <Link className="back-link" to="/">← <span>All shows</span></Link>
       </header>
 
       <section className="detail-hero">
@@ -137,7 +137,7 @@ export default function ShowDetails({ loaderData: show }: Route.ComponentProps) 
         ) : <p className="notice">Cast information is not available.</p>}
       </section>
 
-      <footer className="site-footer"><span>FIELD NOTES</span><a href="/">Back to the collection ↑</a></footer>
+      <footer className="site-footer"><span>FIELD NOTES</span><Link to="/">Back to the collection ↑</Link></footer>
     </main>
   );
 }
@@ -146,13 +146,13 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   const isNotFound = isRouteErrorResponse(error) && error.status === 404;
   return (
     <main className="error-page">
-      <a className="wordmark" href="/">
+      <Link className="wordmark" to="/">
         <span className="wordmark-mark" aria-hidden="true">F</span>
         <span>FIELD NOTES<span className="wordmark-dot">.</span></span>
-      </a>
+      </Link>
       <p className="eyebrow">{isNotFound ? "SHOW NOT FOUND" : "CONNECTION INTERRUPTED"}</p>
       <h1>{isNotFound ? "We couldn't find that series." : "Show details couldn't be loaded."}</h1>
-      <a className="official-link" href="/">← Return to all shows</a>
+      <Link className="official-link" to="/">← Return to all shows</Link>
     </main>
   );
 }

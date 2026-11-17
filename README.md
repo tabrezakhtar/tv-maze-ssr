@@ -9,6 +9,17 @@ Field Notes is a server-rendered catalog of nature and wildlife television shows
 
 Show data is loaded by React Router route loaders from TVMaze. With server-side rendering enabled, those API requests run on the server.
 
+## JavaScript and Navigation
+
+The app works with JavaScript enabled or disabled. With JavaScript enabled, navigation between the catalog and show pages is handled client-side, so only the relevant page data and content update without a full document reload. With JavaScript disabled, links perform a full page refresh and the server renders each requested page.
+
+To test either mode in Chrome:
+
+1. Open Chrome DevTools with `Ctrl+Shift+I` (on macOS, `Cmd+Option+I`).
+2. Open the DevTools Command Menu with `Ctrl+Shift+P` (on macOS, `Cmd+Shift+P`).
+3. Search for and select **Disable JavaScript** or **Enable JavaScript**, depending on the current setting.
+4. Refresh the page, then navigate between the catalog and a show page to compare the behavior.
+
 ## Stack
 
 - React Router Framework Mode with TypeScript and SSR
